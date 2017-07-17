@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 7, 2017 10:50:57 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Payback" table="payback" catalog="quick_claim" optimistic-lock="version">
+        <id name="paybackId" type="java.lang.Integer">
+            <column name="payback_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="claim" class="model.Claim" fetch="select">
+            <column name="claim_id" not-null="true" />
+        </many-to-one>
+        <property name="dateTime" type="timestamp">
+            <column name="date_time" length="19" />
+        </property>
+        <property name="amount" type="java.lang.Double">
+            <column name="amount" precision="22" scale="0" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>

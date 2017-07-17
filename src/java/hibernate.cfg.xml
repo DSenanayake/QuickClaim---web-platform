@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/quick_claim?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.show_sql">true</property>
+    <mapping resource="model/Claim.hbm.xml"/>
+    <mapping resource="model/ClaimPhoto.hbm.xml"/>
+    <mapping resource="model/Payback.hbm.xml"/>
+    <mapping resource="model/City.hbm.xml"/>
+    <mapping resource="model/InsuranceInfo.hbm.xml"/>
+    <mapping resource="model/VehicleModel.hbm.xml"/>
+    <mapping resource="model/ImageUrl.hbm.xml"/>
+    <mapping resource="model/ClaimStatus.hbm.xml"/>
+    <mapping resource="model/VehicleStatus.hbm.xml"/>
+    <mapping resource="model/InsuranceStatus.hbm.xml"/>
+    <mapping resource="model/FuelType.hbm.xml"/>
+    <mapping resource="model/Owner.hbm.xml"/>
+    <mapping resource="model/Vehicle.hbm.xml"/>
+    <mapping resource="model/Color.hbm.xml"/>
+    <mapping resource="model/Company.hbm.xml"/>
+    <mapping resource="model/VehicleBrand.hbm.xml"/>
+    <mapping resource="model/OwnerStatus.hbm.xml"/>
+    <mapping resource="model/State.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

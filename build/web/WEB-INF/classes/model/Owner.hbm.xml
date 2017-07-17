@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 7, 2017 10:50:57 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Owner" table="owner" catalog="quick_claim" optimistic-lock="version">
+        <id name="ownerId" type="string">
+            <column name="owner_id" length="10" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="city" class="model.City" fetch="select">
+            <column name="city_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="imageUrl" class="model.ImageUrl" fetch="select">
+            <column name="image_url_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="ownerStatus" class="model.OwnerStatus" fetch="select">
+            <column name="owner_status_id" not-null="true" />
+        </many-to-one>
+        <property name="firstName" type="string">
+            <column name="first_name" length="45" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="45" />
+        </property>
+        <property name="mobile" type="string">
+            <column name="mobile" length="45" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="45" />
+        </property>
+        <set name="insuranceInfos" table="insurance_info" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="owner_id" length="10" not-null="true" />
+            </key>
+            <one-to-many class="model.InsuranceInfo" />
+        </set>
+    </class>
+</hibernate-mapping>

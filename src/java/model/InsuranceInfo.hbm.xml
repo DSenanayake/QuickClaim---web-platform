@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 7, 2017 10:50:57 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.InsuranceInfo" table="insurance_info" catalog="quick_claim" optimistic-lock="version">
+        <id name="insuranceId" type="java.lang.Integer">
+            <column name="insurance_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="insuranceStatus" class="model.InsuranceStatus" fetch="select">
+            <column name="insurance_status_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="owner" class="model.Owner" fetch="select">
+            <column name="owner_id" length="10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vehicle" class="model.Vehicle" fetch="select">
+            <column name="vehicle_id" length="15" not-null="true" />
+        </many-to-one>
+        <property name="insuredValue" type="java.lang.Double">
+            <column name="insured_value" precision="22" scale="0" />
+        </property>
+        <property name="insuredDate" type="date">
+            <column name="insured_date" length="10" />
+        </property>
+        <property name="expireDate" type="date">
+            <column name="expire_date" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

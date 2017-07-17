@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 7, 2017 10:50:57 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Claim" table="claim" catalog="quick_claim" optimistic-lock="version">
+        <id name="claimId" type="java.lang.Integer">
+            <column name="claim_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="claimStatus" class="model.ClaimStatus" fetch="select">
+            <column name="claim_status_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="company" class="model.Company" fetch="select">
+            <column name="company_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vehicle" class="model.Vehicle" fetch="select">
+            <column name="vehicle_id" length="15" not-null="true" />
+        </many-to-one>
+        <property name="longitude" type="java.lang.Double">
+            <column name="longitude" precision="22" scale="0" />
+        </property>
+        <property name="latitude" type="java.lang.Double">
+            <column name="latitude" precision="22" scale="0" />
+        </property>
+        <property name="datetime" type="timestamp">
+            <column name="datetime" length="19" />
+        </property>
+        <set name="paybacks" table="payback" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="claim_id" not-null="true" />
+            </key>
+            <one-to-many class="model.Payback" />
+        </set>
+        <set name="claimPhotos" table="claim_photo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="claim_claim_id" not-null="true" />
+            </key>
+            <one-to-many class="model.ClaimPhoto" />
+        </set>
+    </class>
+</hibernate-mapping>
